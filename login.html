@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Waste Warriors India</title>
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h2>🔐 Login to Waste Warriors India</h2>
+      <form action="/dashboard" method="POST" id="signupForm">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Login</button>
+        
+        <p class="signup-link">New here? <a href="signup.html">Create an account</a></p>
+      </form>
+       <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault(); 
+      window.location.href = "slogin.html"; 
+    });
+  </script>
+    </div>
+  </div>
+</body>
+</html>
