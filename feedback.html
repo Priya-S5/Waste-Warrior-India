@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback | Waste Warriors India</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .feedback-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ccc;
+    }
+
+    .feedback-container h2 {
+      text-align: center;
+      color: #00ccff;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    textarea, select, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .emoji-row {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .emoji-row span:hover {
+      transform: scale(1.2);
+    }
+
+    .submit-button {
+      background-color: #00ccff;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .submit-button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="feedback-container">
+    <h2>📝 Share Your Feedback</h2>
+    <form method="POST" action="/submit-feedback">
+      <label for="mood">How was your experience?</label>
+      <div class="emoji-row">
+        <span>😠</span>
+        <span>😐</span>
+        <span>😊</span>
+        <span>🤩</span>
+      </div>
+
+      <label for="service">Which service are you rating?</label>
+      <select name="service" id="service" required>
+        <option value="">Select</option>
+        <option value="reporting">Waste Reporting</option>
+        <option value="training">Training Module</option>
+        <option value="dashboard">Dashboard</option>
+        <option value="marketplace">Eco Marketplace</option>
+      </select>
+
+      <label for="comments">Any suggestions or issues?</label>
+      <textarea name="comments" id="comments" rows="4" placeholder="Your thoughts..." required></textarea>
+
+      <button type="submit" class="submit-button">Submit Feedback</button>
+    </form>
+  </div>
+</body>
+</html>
