@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Waste Warriors India</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #203a43;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      font-size: 24px;
+      color: #00ff99;
+    }
+
+    .nav-links a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .dashboard-header {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .dashboard-header h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .dashboard-header p {
+      font-size: 18px;
+    }
+
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 40px 20px;
+    }
+
+    .stat-box {
+      background-color: #fff;
+      width: 250px;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      color: #00ccff;
+      margin-bottom: 10px;
+    }
+
+    .stat-box p {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .actions {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .actions a {
+      display: inline-block;
+      background-color: #00ccff;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 10px;
+      box-shadow: 0 0 10px #00ff99;
+      transition: transform 0.3s ease;
+    }
+
+    .actions a:hover {
+      transform: scale(1.05);
+    }
+
+    .footer {
+      background-color: #1a1a1a;
+      color: #eee;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 20px;
+      text-decoration: none;
+    }
+    .impact-box {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ff99;
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+.impact-box h2 {
+  color: #00ccff;
+  margin-bottom: 20px;
+}
+
+.impact-box ul {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #00ccff;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00ff99;
+}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>🗡️ Waste Warriors India</h1>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="geo_report.html">Report Waste</a>
+      <a href="training.html">Training</a>
+      <a href="logout.html">Logout</a>
+    </div>
+  </nav>
+
+  <header class="dashboard-header">
+    <h2>Welcome, Civic Ninja!</h2>
+    <p>Track your impact, monitor your city, and lead the clean-up revolution.</p>
+  </header>
+
+  <section class="stats-grid">
+    <div class="stat-box">
+      <h3>🗑️ Waste Generated Today</h3>
+      <p>1,70,339 TPD</p>
+    </div>
+    <div class="stat-box">
+      <h3>✅ Waste Treated</h3>
+      <p>91,511 TPD</p>
+    </div>
+    <div class="stat-box">
+      <h3>📍 Geo Reports</h3>
+      <p>2,384</p>
+    </div>
+      <div class="stat-box">
+      <h3>🏆 Your Rank</h3>
+      <p>#17</p>
+    </div>
+  </section>
+
+       <div class="impact-box">
+  <h2>🌱 Your Civic Impact</h2>
+  <ul>
+    <li>♻️ Waste Diverted: <strong>12.4 kg</strong></li>
+    <li>🧪 Compost Created: <strong>3.1 kg</strong></li>
+    <li>📸 Reports Submitted: <strong>7</strong></li>
+    <li>🎓 Training Level: <strong>Level 2 – Segregation Ninja</strong></li>
+  </ul>
+  <a href="/missions" class="cta-button">🎯 View Your Missions</a>
+</div>
+
+  
+  <section class="actions">
+    <a href="/report">📸 Report Waste</a>
+    <a href="/training">🎓 Continue Training</a>
+    <a href="/shop">🛒 Shop Eco Kits</a>
+    <a href="/champions">🛡️ Join Green Champions</a>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Waste Warriors India. Powered by CodeKunoichi.</p>
+    <div class="social-icons">
+      <a href="https://twitter.com/WasteWarriorsIndia" target="_blank">🐦</a>
+      <a href="https://instagram.com/WasteWarriorsIndia" target="_blank">📸</a>
+      <a href="https://facebook.com/WasteWarriorsIndia" target="_blank">📘</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Report Waste | Waste Warriors India</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+  <style>
+    #map { height: 400px; margin-bottom: 20px; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: #f4f4f4; }
+    form { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+    input, textarea, button { width: 100%; margin-top: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    button { background-color: #00ccff; color: #fff; font-weight: bold; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>📍 Report Illegal Dumping</h2>
+  <div id="map"></div>
+  <form method="POST" action="/submit-report">
+    <input type="text" name="location" id="location" placeholder="Auto-filled location" readonly />
+    <textarea name="description" placeholder="Describe the issue..." required></textarea>
+    <input type="file" name="photo" accept="image/*" />
+    <button type="submit">Submit Report</button>
+  </form>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([28.98, 77.02], 13); // Sonipat default
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    let marker;
+
+    map.on('click', function(e) {
+      const latlng = e.latlng;
+      if (marker) map.removeLayer(marker);
+      marker = L.marker(latlng).addTo(map);
+      document.getElementById('location').value = `${latlng.lat}, ${latlng.lng}`;
+    });
+  </script>
+</body>
+</html>
