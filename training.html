@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎓 Civic Training Dojo | CodeKunoichi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #fff;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px #00ffcc;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      color: #ffd700;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .intro {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #ccc;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .module-card {
+      background-color: #1a1a1a;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffcc;
+      position: relative;
+    }
+
+    .module-card h2 {
+      font-size: 1.5em;
+      color: #00ccff;
+      margin-bottom: 10px;
+    }
+
+    .module-card p {
+      font-size: 1.1em;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar {
+      background-color: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-fill {
+      height: 20px;
+      background-color: #00ffcc;
+      width: 0%;
+      text-align: center;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .start-btn {
+      display: inline-block;
+      background-color: #00ccff;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .start-btn:hover {
+      background-color: #0099cc;
+    }
+
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: #ffd700;
+      color: #000;
+      padding: 6px 12px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #ffd700;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.1em;
+      color: #ccc;
+    }
+
+    .footer span {
+      color: #ffdd00;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎓 CodeKunoichi Civic Training Dojo</h1>
+    <div class="intro">
+      ✦ Welcome, trainee. Your mission is to master civic-tech skills, complete modules, and rise through the ninja ranks.<br />
+      Each module unlocks new powers—from waste management to community engagement. Let’s begin.
+    </div>
+
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="badge">⭐ Novice</div>
+        <h2>🌱 Waste Classification</h2>
+        <p>Learn to identify dry, wet, recyclable, and hazardous waste.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 60%;">60%</div></div>
+        <a href="waste.html" class="start-btn">🚀 Continue Module</a>
+      </div>
+
+      <div class="module-card">
+        <div class="badge">🌟 Apprentice</div>
+        <h2>♻️ Composting & Recycling</h2>
+        <p>Turn kitchen waste into compost and reduce landfill impact.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 30%;">30%</div></div>
+        <a href="compost.html" class="start-btn">🌿 Start Module</a>
+      </div>
+
+      <div class="module-card">
+        <div class="badge">✨ Strategist</div>
+        <h2>🗺️ Route Optimization</h2>
+        <p>Design smart pickup routes using bin data and geolocation.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 0%;">0%</div></div>
+        <a href="optimize-route.html" class="start-btn">🧭 Begin Module</a>
+      </div>
+
+      <div class="module-card">
+        <div class="badge">🌠 Sensei</div>
+        <h2>🔮 Sentiment Analysis</h2>
+        <p>Decode citizen feedback and trigger civic responses.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width: 85%;">85%</div></div>
+        <a href="analyze-sentiment.html" class="start-btn">🧠 Finalize Module</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      ✦ Progress saved in your <span>CodeKunoichi Profile</span> | Complete all modules to unlock <span>Master Rank</span>
+    </div>
+  </div>
+</body>
+</html>
