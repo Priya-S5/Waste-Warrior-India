@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🗺️ Optimize Route | CodeKunoichi Ops</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ffcc;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2em;
+      color: #00ffcc;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+      background-color: #1a1a1a;
+      color: #fff;
+      box-shadow: 0 0 5px #00ffcc;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1em;
+      background-color: #00ccff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffcc;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #0099cc;
+    }
+
+    #map {
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffcc;
+      margin-top: 30px;
+    }
+
+    .mission-log {
+      margin-top: 30px;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .mission-log h3 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .mission-log p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: #ffdd00;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🗺️ Route Optimization: Ninja Ops Mode</h2>
+
+    <form id="routeForm">
+      <label for="location">🧭 Enter Your Mission Zone</label>
+      <input type="text" id="location" name="location" placeholder="✦ e.g. Sector 5, Sonipat 🏙️" />
+
+      <button type="submit">🚀 Deploy Optimized Route</button>
+      <button type="button" id="autoDetectBtn">🌐 Activate Ninja Locator</button>
+    </form>
+
+    <div id="map"></div>
+
+    <div class="mission-log" id="missionLog" style="display:none;">
+      <h3>🎯 Mission Summary</h3>
+      <p>🧭 Zone Detected: <span class="highlight" id="zoneName"></span></p>
+      <p>📦 Bins Targeted: <span class="highlight" id="binCount"></span></p>
+      <p>⏱️ Estimated Time: <span class="highlight" id="eta"></span></p>
+      <p>🛡️ Efficiency Boost: <span class="highlight" id="efficiency"></span></p>
+    </div>
+  </div>
+
+  <script>
+    const map = L.map('map').setView([28.98, 76.93], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '🗺️ Map data © OpenStreetMap contributors'
+    }).addTo(map);
+
+    function renderRoute(data) {
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker || layer instanceof L.Polyline) {
+          map.removeLayer(layer);
+        }
+      });
+
+      data.route.forEach((point, i) => {
+        L.marker([point.lat, point.lng])
+          .addTo(map)
+          .bindPopup(`📍 Stop ${i + 1}`);
+      });
+
+      const path = data.route.map(p => [p.lat, p.lng]);
+      L.polyline(path, { color: '#00ffcc' }).addTo(map);
+
+      document.getElementById('zoneName').textContent = data.zone;
+      document.getElementById('binCount').textContent = data.route.length;
+      document.getElementById('eta').textContent = data.eta;
+      document.getElementById('efficiency').textContent = data.efficiency;
+      document.getElementById('missionLog').style.display = 'block';
+    }
+
+    document.getElementById('routeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const location = document.getElementById('location').value;
+
+      fetch(`/optimize-route?location=${encodeURIComponent(location)}`)
+        .then(res => res.json())
+        .then(renderRoute);
+    });
+
+    document.getElementById('autoDetectBtn').addEventListener('click', function () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          const lat = pos.coords.latitude;
+          const lng = pos.coords.longitude;
+
+          fetch(`/optimize-route?lat=${lat}&lng=${lng}`)
+            .then(res => res.json())
+            .then(renderRoute);
+        });
+      } else {
+        alert("⚠️ Geolocation not supported.");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Tools Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+      margin-bottom: 40px;
+    }
+
+    .tool-card {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .tool-card h2 {
+      color: #00ccff;
+      margin-bottom: 10px;
+    }
+
+    .tool-card p {
+      margin-bottom: 10px;
+    }
+
+    .tool-card a {
+      display: inline-block;
+      background-color: #00ccff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .tool-card a:hover {
+      background-color: #0099cc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 AI Tools Dashboard</h1>
+
+    <div class="tool-card">
+      <h2>📊 Segregation Compliance Predictor</h2>
+      <p>Uses historical data and citizen feedback to forecast waste segregation rates by zone.</p>
+      <a href="predict-compliance.html">Try It</a>
+    </div>
+
+    <div class="tool-card">
+      <h2>🧪 Smart Quiz Engine</h2>
+      <p>Adaptive quizzes that adjust difficulty based on user performance. Tracks civic knowledge and awards badges.</p>
+      <a href="/quiz">Take a Quiz</a>
+    </div>
+
+    <div class="tool-card">
+      <h2>🖼️ Waste Image Classifier</h2>
+      <p>Upload a photo of waste and get instant AI feedback on proper disposal category (dry, wet, hazardous).</p>
+      <a href="classify-waste.html">Classify Waste</a>
+    </div>
+
+    <div class="tool-card">
+      <h2>📍 Route Optimizer for Waste Workers</h2>
+      <p>AI-powered routing based on bin fill levels, traffic, and missed pickups. Saves fuel and time.</p>
+      <a href="optimize-route.html">Optimize Route</a>
+    </div>
+
+    <div class="tool-card">
+      <h2>📈 Impact Visualizer</h2>
+      <p>Generates animated charts showing clean-up impact, training progress, and eco-product adoption.</p>
+      <a href="/visualize-impact">View Impact</a>
+    </div>
+
+    <div class="tool-card">
+      <h2>🧭 Civic Sentiment Analyzer</h2>
+      <p>Analyzes emoji feedback and citizen messages to detect mood trends and trigger outreach.</p>
+      <a href="analyze-sentiment.html">Analyze Feedback</a>
+    </div>
+  </div>
+</body>
+</html>

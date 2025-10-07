@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🔮 Sentiment Analyzer | CodeKunoichi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #fff;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ffcc;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2em;
+      color: #00ffcc;
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.1em;
+      border-radius: 10px;
+      border: none;
+      background-color: #1a1a1a;
+      color: #fff;
+      box-shadow: 0 0 10px #00ffcc;
+      resize: vertical;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      font-size: 1.1em;
+      background-color: #00ccff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    button:hover {
+      background-color: #0099cc;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .result-box h3 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .result-box p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .emoji {
+      font-size: 2em;
+      margin-right: 10px;
+    }
+
+    .mood {
+      font-weight: bold;
+      color: #ffdd00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔮 Sentiment Analyzer ✦</h1>
+    <form id="sentimentForm">
+      <textarea id="feedback" rows="5" placeholder="✧ Paste citizen feedback, emoji reactions, or comments here..." required></textarea>
+      <button type="submit">🧠 Decode Sentiment</button>
+    </form>
+
+    <div class="result-box" id="resultBox" style="display:none;">
+      <h3>🎯 Mood Analysis</h3>
+      <p><span class="emoji" id="moodEmoji">😐</span> Detected Mood: <span class="mood" id="moodLabel">Neutral</span></p>
+      <p>🧭 Civic Insight: <span id="insightText">Awaiting analysis...</span></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('sentimentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const feedback = document.getElementById('feedback').value;
+
+      fetch('/analyze-sentiment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ feedback })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('moodEmoji').textContent = data.emoji;
+        document.getElementById('moodLabel').textContent = data.mood;
+        document.getElementById('insightText').textContent = data.insight;
+        document.getElementById('resultBox').style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>

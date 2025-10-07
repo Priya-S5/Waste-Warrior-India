@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Green Champions Portal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      color: #fff;
+      padding: 20px;
+    }
+
+    .form-box {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 15px #00ff99;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00ff99;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background-color: #00ccff;
+      color: #fff;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0099cc;
+    }
+     #map { height: 400px; margin-bottom: 20px; }
+  </style>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <div class="form-box">
+    <h2>🛡️ Log Your Clean-Up Event</h2>
+     <div id="map"></div>
+    <form method="POST" action="/submit-event" enctype="multipart/form-data">
+     <input type="text" name="location" id="location" placeholder="Auto-filled location" readonly />
+      <label for="date">Date</label>
+      <input type="date" name="date" required />
+
+      <label for="theme">Theme</label>
+      <select name="theme" required>
+        <option value="plastic">Plastic Cleanup</option>
+        <option value="garden">Community Garden</option>
+        <option value="awareness">Awareness Drive</option>
+        <option value="recycling">Recycling Workshop</option>
+      </select>
+
+      <label for="area">Area Cleaned (sq meters)</label>
+      <input type="number" name="area" required />
+
+      <label for="waste">Waste Collected (kg)</label>
+      <input type="number" name="waste" required />
+
+      <label for="volunteers">Volunteers Mobilized</label>
+      <input type="number" name="volunteers" required />
+
+      <label for="before">Before Photo</label>
+      <input type="file" name="before" accept="image/*" required />
+
+      <label for="after">After Photo</label>
+      <input type="file" name="after" accept="image/*" required />
+
+      <button type="submit">🚀 Submit Event</button>
+    </form>
+     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([28.98, 77.02], 13); // Sonipat default
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    let marker;
+
+    map.on('click', function(e) {
+      const latlng = e.latlng;
+      if (marker) map.removeLayer(marker);
+      marker = L.marker(latlng).addTo(map);
+      document.getElementById('location').value = `${latlng.lat}, ${latlng.lng}`;
+    });
+  </script>
+  </div>
+</body>
+</html>

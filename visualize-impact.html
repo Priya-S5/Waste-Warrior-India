@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌟 Visualize Impact | CodeKunoichi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      padding: 40px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #00ffcc;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      color: #ffd700;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .impact-card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffcc;
+      text-align: center;
+      position: relative;
+    }
+
+    .impact-card h2 {
+      font-size: 1.5em;
+      color: #00ccff;
+      margin-bottom: 10px;
+    }
+
+    .impact-card p {
+      font-size: 1.2em;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .star {
+      font-size: 2em;
+      animation: twinkle 2s infinite ease-in-out;
+      color: #ffd700;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.1em;
+      color: #ccc;
+    }
+
+    .footer span {
+      color: #ffdd00;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌟 Civic Impact Constellation</h1>
+
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="star">⭐</div>
+        <h2>Waste Diverted</h2>
+        <p><span id="wasteKg">12,480 kg</span></p>
+        <p>♻️ Compost, Recycle, Reuse</p>
+      </div>
+
+      <div class="impact-card">
+        <div class="star">🌟</div>
+        <h2>Clean-Up Missions</h2>
+        <p><span id="missions">342</span></p>
+        <p>🧹 Across 18 zones</p>
+      </div>
+
+      <div class="impact-card">
+        <div class="star">✨</div>
+        <h2>Citizen Feedback</h2>
+        <p><span id="positiveRate">91%</span> Positive</p>
+        <p>💬 Mood: Empowered</p>
+      </div>
+
+      <div class="impact-card">
+        <div class="star">🌠</div>
+        <h2>Training Completion</h2>
+        <p><span id="trained">1,204</span> Ninjas</p>
+        <p>🎓 Civic-tech certified</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      ✦ Powered by <span>CodeKunoichi</span> | Impact updated <span>live</span> from the field
+    </div>
+  </div>
+</body>
+</html>

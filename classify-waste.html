@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>✦ Classify Waste ✦ | Eco Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #232526, #414345);
+      color: #fff;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ffcc;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00ffcc;
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      color: #fff;
+      border: 1px solid #00ffcc;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      background-color: #00ccff;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    button:hover {
+      background-color: #0099cc;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .result-box h3 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .result-box p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .category {
+      font-weight: bold;
+      color: #ffdd00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>✦ Classify Your Waste ✦</h2>
+    <form id="wasteForm" enctype="multipart/form-data">
+      <input type="file" name="wasteImage" id="wasteImage" accept="image/*" required />
+      <button type="submit">🔍 Analyze Waste</button>
+    </form>
+
+    <div class="result-box" id="resultBox" style="display:none;">
+      <h3>🧠 Classification Result</h3>
+      <p>♻️ Category: <span class="category" id="wasteCategory"></span></p>
+      <p>📦 Disposal Tip: <span id="disposalTip"></span></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('wasteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('wasteImage', document.getElementById('wasteImage').files[0]);
+
+      fetch('/classify-waste', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('wasteCategory').textContent = data.category;
+        document.getElementById('disposalTip').textContent = data.tip;
+        document.getElementById('resultBox').style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
