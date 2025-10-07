@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ask the AI | CodeKunoichi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      color: #fff;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffcc;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00ffcc;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 15px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #00ccff;
+      color: #fff;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0099cc;
+    }
+
+    .response-box {
+      margin-top: 30px;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .response-box h3 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .response-box p {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🤖 Ask the AI Anything</h2>
+    <form id="aiForm">
+      <label for="question">Type your question below:</label>
+      <textarea id="question" name="question" rows="5" placeholder="e.g. How do I start a compost pit in Sector 5?" required></textarea>
+      <button type="submit">🚀 Ask AI</button>
+    </form>
+
+    <div class="response-box" id="responseBox" style="display:none;">
+      <h3>🧠 AI Response</h3>
+      <p id="aiResponse"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('aiForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const question = document.getElementById('question').value;
+
+      fetch('/ask-ai', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('aiResponse').textContent = data.answer;
+        document.getElementById('responseBox').style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
